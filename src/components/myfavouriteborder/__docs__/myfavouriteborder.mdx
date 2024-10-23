@@ -1,0 +1,36 @@
+import { Canvas, Meta } from "@storybook/blocks";
+import Example from "./example.tsx";
+import * as MyFavouriteBorder from "./myfavouriteborder.stories.tsx"; 
+
+<Meta of={MyFavouriteBorder} title="MyFavouriteBorder" />
+
+# MyFavouriteBorder
+
+Componente que combina un `IconButton` y un icono de favorito de Material UI.
+
+## Props
+
+- **color**: Color del icono (requerido).
+- **disabled**: Estado deshabilitado del botón (opcional).
+- **onClick**: Función que se ejecuta al hacer clic en el botón (opcional).
+
+## Ejemplo
+
+### Estado Predeterminado
+
+<Canvas of={MyFavouriteBorder.Default} />
+
+## Uso
+
+```ts
+import { MyFavouriteBorder } from 'milibreria';
+
+function Example() {
+    return (
+        <MyFavouriteBorder
+            color="red" 
+            onClick={() => alert("¡Favorito añadido!")} 
+        />
+    );
+}
+export default Example;
