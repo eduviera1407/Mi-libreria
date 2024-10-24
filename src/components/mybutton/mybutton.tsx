@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from 'react';
+import  { MouseEventHandler } from 'react';
 import Button from '@mui/material/Button';
 
 // Declaro la interface del componente.
