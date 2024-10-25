@@ -1,0 +1,45 @@
+import { Canvas, Meta } from "@storybook/blocks";
+import Example from "./example.tsx";
+import * as MyTypography from "./mytypography.stories.tsx"; 
+
+<Meta of={MyTypography} title="MyTypography" />
+
+# MyTypography
+
+Componente que permite aplicar estilos tipográficos personalizados.
+
+## Props
+
+- **text**: Contenido de texto que se mostrará (requerido).
+- **variant**: Variante tipográfica, como `h1`, `body`, etc. (opcional).
+- **color**: Color del texto (opcional).
+- **weight**: Peso de la fuente (opcional, valores como `normal` o `bold`).
+- **align**: Alineación del texto (opcional, valores como `left`, `center`, `right`).
+
+## Ejemplo
+
+### Estado Predeterminado
+
+<Canvas of={MyTypography.Default} />
+
+### Estilo Personalizado
+
+<Canvas of={MyTypography.Custom} />
+
+## Uso
+
+```ts
+import { MyTypography } from 'milibreria';
+
+function Example() {
+    return (
+        <MyTypography 
+            text="Texto de ejemplo" 
+            variant="h1" 
+            color="#3498db" 
+            weight={700} 
+            align="center" 
+        />
+    );
+}
+export default Example;
