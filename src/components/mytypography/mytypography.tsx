@@ -1,34 +1,39 @@
-// mytypography.tsx
 import React from 'react';
+import { Typography, TypographyProps } from '@mui/material';
 
-interface MyTypographyProps {
-  text: string;
-  variant?: 'h1' | 'h2' | 'h3' | 'body' | 'caption';
-  color?: string;
-  weight?: number | 'normal' | 'bold';
-  align?: 'left' | 'center' | 'right';
+// Declaro la interface del componente.
+export interface CustomTypographyProps extends TypographyProps {
+    text: string;                   // Texto a mostrar
+    txtcolor: string;               // Color del texto
+    fontSize: string;               // Tamaño de fuente
+    fontWeight?: string | number;   // Peso de la fuente (opcional)
+    hoverTxtColor?: string;         // Color del texto al hacer hover (opcional)
+    onClick?: React.MouseEventHandler<HTMLSpanElement>; // Función onClick (opcional)
 }
 
-const MyTypography: React.FC<MyTypographyProps> = ({
-  text,
-  variant = 'body',
-  color = '#000',
-  weight = 'normal',
-  align = 'left',
-}) => {
-  const style = {
-    color,
-    fontWeight: weight,
-    textAlign: align as 'left' | 'center' | 'right',
-  };
+// Defino mi componente MyTypography y le digo que las props son las que definí arriba
+function MyTypography(props: CustomTypographyProps) {
+    // Paso el valor de las props a un objeto:
+    const { text, txtcolor, fontSize, fontWeight, hoverTxtColor, onClick, ...rest } = props;
 
-  const Tag = variant === 'body' ? 'p' : variant;
-
-  return (
-    <Tag className={`my-typography ${variant}`} style={style}>
-      {text}
-    </Tag>
-  );
-};
+    return (
+        // Uso el Typography de la librería MUI y lo personalizo con las props que pasan a mi componente.
+        <Typography
+            sx={{
+                color: txtcolor,
+                fontSize: fontSize,
+                fontWeight: fontWeight || 'normal',
+                transition: 'color 0.3s', // Efecto de transición
+                '&:hover': {
+                    color: hoverTxtColor, // Color del texto al hacer hover
+                },
+            }}
+            onClick={onClick} // Asigno el evento onClick
+            {...rest} // Pasa otras props para mantener la flexibilidad
+        >
+            {text}
+        </Typography>
+    );
+}
 
 export default MyTypography;
